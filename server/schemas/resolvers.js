@@ -4,11 +4,11 @@ const { AuthenticationError } = require('apollo-server-express');
 
 const resolvers = {
     Query: {
-        me: async (parent, args, { user }) => {
-            if (!user) {
-                throw new AuthenticationError("Must be logged in");
+        me: async (parent, args, context) => {
+            if (context.user) {
+                return await User.findOne({ _id: context.user._id });
             }
-           return await User.findOne({ _id: user._id });
+            throw new AuthenticationError("Must be logged in");
         },
     },
 
