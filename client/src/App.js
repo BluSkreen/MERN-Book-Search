@@ -3,7 +3,7 @@ import React from "react";
 import {
     ApolloClient, // connection
     InMemoryCache, // cache authentication
-    ApolloProvider, // provide wraps around app component and allows access to graphql
+    ApolloProvider, // wraps around app component and allows access to graphql
     createHttpLink, // format the authentication link --> used for creating client
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context"; // function :D
